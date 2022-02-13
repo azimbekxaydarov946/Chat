@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -11,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -18,11 +20,26 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'first_name',
+        'last_name',
+        'nick_name',
+        'about_me',
+        // 'email',
         'password',
+        'create_by',
+        'update_by',
+        'deleted_by'
     ];
 
+    public function message()
+    {
+        return $this->hasMany(Message::class,'auth_id','id');
+    }
+
+    public function chat()
+    {
+        return $this->hasMany(Chat::class,'chat_id','id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
