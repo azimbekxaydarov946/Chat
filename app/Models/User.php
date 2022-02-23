@@ -24,7 +24,8 @@ class User extends Authenticatable
         'last_name',
         'nick_name',
         'about_me',
-        // 'email',
+        'gender',
+        'email',
         'password',
         'create_by',
         'update_by',
@@ -33,12 +34,12 @@ class User extends Authenticatable
 
     public function message()
     {
-        return $this->hasMany(Message::class,'auth_id','id');
+        return $this->hasOne(Message::class,'auth_id','id');
     }
 
     public function chat()
     {
-        return $this->hasMany(Chat::class,'chat_id','id');
+        return $this->hasMany(Chat::class,'user_id','id');
     }
     /**
      * The attributes that should be hidden for serialization.

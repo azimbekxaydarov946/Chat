@@ -21,8 +21,8 @@ class MessageFactory extends Factory
         return [
             'message'=>$this->faker->words(10,true),
             'file'=>$this->faker->url(),
-            'chat_id'=>$this->faker->numberBetween(1,50),
-            'auth_id'=>$this->faker->numberBetween(1,50)
+            'chat_id'=>$this->faker->numberBetween(1,10),
+            'auth_id'=>$this->faker->unique()->numberBetween(1,10)
         ];
     }
 }

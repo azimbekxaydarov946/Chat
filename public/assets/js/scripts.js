@@ -697,6 +697,7 @@ $(function () {
   jQuery("body").addClass("light");
   jQuery("body").addClass("light-sidebar");
   jQuery("body").addClass("theme-white");
+  jQuery("body").addClass("sidebar-mini");
   // set theme default color
   $(".choose-theme li").removeClass("active");
   $(".choose-theme li[title|='white']").addClass("active");
