@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('nick_name')->unique()->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->date('birth_day')->nullable();
+            $table->string('phone')->unique()->nullable();
             $table->string('about_me')->nullable();
             $table->integer('gender')->nullable();
             $table->string('password')->nullable();

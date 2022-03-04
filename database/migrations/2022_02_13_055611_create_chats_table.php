@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
+            $table->integer('auth_id');
             $table->integer('user_id');
+            $table->date('date');
+            $table->integer('chat_id');
             $table->integer('create_by')->nullable();
             $table->integer('update_by')->nullable();
             $table->integer('deleted_by')->nullable();

@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->integer('chat_id')->nullable();
-            $table->longText('message')->nullable();
-            $table->integer('user_id')->nullable();
-            $table->integer('file_id')->nullable();
-            $table->integer('view')->nullable();
-            $table->date('date')->nullable();
+            $table->string("orginal_name");
+            $table->string("name");
+            $table->float("size");
+            $table->string("type");
             $table->integer('create_by')->nullable();
             $table->integer('update_by')->nullable();
             $table->integer('deleted_by')->nullable();
@@ -36,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('files');
     }
 };

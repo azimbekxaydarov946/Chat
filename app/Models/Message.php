@@ -12,18 +12,20 @@ class Message extends Model
     use SoftDeletes;
 
     protected $fillable=[
-        'message',
-        'file',
         'chat_id',
-        'auth_id',
+        'message',
+        'user_id',
+        'file_id',
+        'view',
+        'date',
         'create_by',
         'update_by',
         'deleted_by'
     ];
 
-    public function user()
+    public function file()
     {
-        return $this->belongsTo(User::class,'auth_id','id');
+        return $this->belongsTo(File::class,'file_id','id');
     }
     public function chat()
     {

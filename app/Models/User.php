@@ -23,24 +23,17 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'nick_name',
+        'email',
+        'birth_day',
+        'phone',
         'about_me',
         'gender',
-        'email',
         'password',
         'create_by',
         'update_by',
         'deleted_by'
     ];
 
-    public function message()
-    {
-        return $this->hasOne(Message::class,'auth_id','id');
-    }
-
-    public function chat()
-    {
-        return $this->hasMany(Chat::class,'user_id','id');
-    }
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -6,22 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Chat extends Model
+class File extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable=[
-        'auth_id',
-        'user_id',
-        'date',
-        'chat_id',
+    protected $fillable=
+    [
+        'orginal_name',
+        'name',
+        'size',
+        'type',
         'create_by',
         'update_by',
         'deleted_by'
     ];
-  public function message()
-  {
-      return $this->hasMany(Message::class,'chat_id','id');
-  }
+
+    public function message()
+    {
+        return $this->belongsTo(Message::class,'file_id','id');
+    }
 }
