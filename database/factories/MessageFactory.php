@@ -19,10 +19,12 @@ class MessageFactory extends Factory
     public function definition()
     {
         return [
-            'message'=>$this->faker->words(10,true),
-            'file'=>$this->faker->url(),
             'chat_id'=>$this->faker->numberBetween(1,10),
-            'auth_id'=>$this->faker->unique()->numberBetween(1,10)
+            'message'=>$this->faker->words(10,true),
+            'user_id'=>$this->faker->numberBetween(1,10),
+            'file_id'=>$this->faker->numberBetween(1,10),
+            'view'=>$this->faker->numberBetween(0,1),
+            'date'=>$this->faker->date(),
         ];
     }
 }

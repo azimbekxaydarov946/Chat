@@ -23,9 +23,11 @@ class UserFactory extends Factory
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'nick_name' => $this->faker->unique()->country(),
-            'about_me' => $this->faker->words(5,true),
-            'gender' => $this->faker->numberBetween(1,2),
             'email' => $this->faker->unique()->safeEmail(),
+            'birth_day' => $this->faker->date(),
+            'phone' => $this->faker->phoneNumber(),
+            'about_me' => $this->faker->words(5,true),
+            'gender' => $this->faker->numberBetween(0,1),
             'email_verified_at' => now(),
             'password' => bcrypt('12345678'), // password
             'remember_token' => Str::random(10),

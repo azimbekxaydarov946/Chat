@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Chat;
 use App\Models\Message;
+use App\Models\User;
 use Livewire\Component;
 
 class HomeComponent extends Component
@@ -16,7 +17,8 @@ class HomeComponent extends Component
     public function chatid(int $chatid)
     {
         // dd($chatid);
-        $this->userChats = Chat::with('message')->where('user_id',$chatid);
+        Chat::with('user')->where('chat_id', $chatid)->get();
+        $this->userChats = Message::where('chat_id',$chatid);
         $this->isOpen = true;
 
     }
@@ -27,7 +29,8 @@ class HomeComponent extends Component
     }
     public function render()
     {
-        $users = Message::with('user', 'chat')->where('auth_id', auth()->user()->id)->get();
+        $users = Chat::with('user')->where('auth_id', auth()->user()->id)->get();
+//    dd($users);
         // $chats = Chat::with('user')->get();
         // $query=DB::select('select cu.first_name,ma.first_name, m.message from chats c
         // join messages m on c.id=m.chat_id

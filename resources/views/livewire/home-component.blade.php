@@ -19,12 +19,12 @@
                                             <ul class="chat-list list-unstyled m-b-0">
                                                 @foreach ($users as $user)
                                                     <li class="clearfix"
-                                                        wire:click="$emit('chatid',{{ $users[0]->chat->user->id }})">
+                                                        wire:click="$emit('chatid',{{ $user->chat_id }})">
                                                         <img src="{{ $user->gender == 0? 'assets/img/users/user.png': ($user->gender == 1? 'assets/img/users/user-3.png': 'assets/img/users/user-9.png') }}"
                                                             alt="avatar">
                                                         <div class="about">
                                                             <div class="name">
-                                                                {{ $users[0]->chat->user->first_name }}</div>
+                                                                {{ $user->user->first_name }}</div>
                                                             <div class="status">
                                                                 <i class="material-icons online">fiber_manual_record</i>
                                                                 online
@@ -92,7 +92,8 @@
                 </div>
             </div>
         </section>
-        <div class="settingSidebar">
+        {{-- Nastroyka start --}}
+        {{-- <div class="settingSidebar">
             <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
             </a>
             <div class="settingSidebar-body ps-container ps-theme-default">
@@ -186,7 +187,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+          {{-- Nastroyka end --}}
     </div>
 
 </div>
