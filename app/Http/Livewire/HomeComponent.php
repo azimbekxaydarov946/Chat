@@ -12,14 +12,20 @@ class HomeComponent extends Component
     protected $listeners = ['chatid'];
 
     protected $isOpen = false;
-    protected $userChats = null;
+    protected $userChatsL = null;
+    protected $userChatsR = null;
 
     public function chatid(int $chatid)
     {
         // dd($chatid);
-        Chat::with('user')->where('chat_id', $chatid)->get();
-        $this->userChats = Message::where('chat_id',$chatid);
+        $this->userChatsR = Message::where('chat_id',$chatid)->where(function($q) {
+            $q->where('user_id', auth()->user()->id);
+        })->first();
+        $this->userChatsL = Message::where('chat_id','!=',$chatid)->where(function($q) {
+            $q->where('user_id','!=', auth()->user()->id);
+        })->first();
         $this->isOpen = true;
+        // dd($this->userChatsL->message);
 
     }
     public function user2($id)
@@ -38,6 +44,6 @@ class HomeComponent extends Component
         // join users ma on m.auth_id=ma.id
         // where ma.id=10');
 
-        return view('livewire.home-component', ['users' => $users, 'user_chats' => $this->userChats, 'isOpen' => $this->isOpen])->layout('layout');
+        return view('livewire.home-component', ['users' => $users, 'userChatsR' => $this->userChatsR,'userChatsL' => $this->userChatsL, 'isOpen' => $this->isOpen])->layout('layout');
     }
 }

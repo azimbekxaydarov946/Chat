@@ -60,33 +60,43 @@
                                                 style="width: 50px;border-radius: 50%"> --}}
                                             <div class="chat-details">
                                                 <div class="chat-text" style="box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%);background-color: #fff;padding: 10px 15px;border-radius: 3px;width: auto;display: inline-block;
-                                          font-size: 12px;">Hi, How R U?!</div>
-                                                <div class="chat-time" style="    margin-top: 5px;font-size: 12px;font-weight: 500; opacity: 0.6;">{{\Carbon\Carbon::now()->timezone('Asia/Tashkent')->format('H:i')}}</div>
+                                          font-size: 12px;">{{$userChatsR->message}}</div>
+                                                <div class="chat-time"
+                                                    style="    margin-top: 5px;font-size: 12px;font-weight: 500; opacity: 0.6;">
+                                                    {{ \Carbon\Carbon::now()->timezone('Asia/Tashkent')->format('H:i') }}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="chat-item chat-right" style="margin-left: 80% ">
-                                            {{-- <img src="assets/img/users/user-5.png"
-                                                style="width: 50px;border-radius: 50%"> --}}
-                                            <div class="chat-details">
-                                                <div class="chat-text" style="text-align: left; background-color: #6777ef;color: #fff; box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%);
-                                                padding: 10px 15px;
-                                                border-radius: 3px;
-                                                width: auto;
-                                                display: inline-block;
-                                                font-size: 12px;">Hi, How R U?!</div>
-                                                <div class="chat-time" style="margin-top: 5px; font-size: 12px;font-weight: 500; opacity: 0.6;;">{{\Carbon\Carbon::now()->timezone('Asia/Tashkent')->format('H:i')}}</div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer chat-form">
-                                            <form id="chat-form">
-                                                <input type="text" class="form-control" placeholder="Type a message">
-                                                <button class="btn btn-primary">
-                                                    <i class="far fa-paper-plane"></i>
-                                                </button>
-                                            </form>
-                                        </div>
+                                        {{-- @foreach ($userChatsR as $itemR) --}}
+                                            <div class="chat-item chat-right" style="margin-left: 80% ">
+                                                {{-- <img src="assets/img/users/user-5.png"style="width: 50px;border-radius: 50%"> --}}
+                                                <div class="chat-details">
+                                                    <div class="chat-text" style="text-align: left;
+                                                    background-color: #6777ef;color: #fff;
+                                                    box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%);
+                                                            padding: 10px 15px;
+                                                            border-radius: 3px;
+                                                            width: auto;
+                                                            display: inline-block;
+                                                            font-size: 12px;">{{ $userChatsR->message }}</div>
+                                                    <div class="chat-time"
+                                                        style="margin-top: 5px; font-size: 12px;font-weight: 500; opacity: 0.6;;">
+                                                        {{ \Carbon\Carbon::now()->timezone('Asia/Tashkent')->format('H:i') }}
+                                                    </div>
+                                                </div>
+                                        {{-- @endforeach --}}
+
+                                    </div>
+                                    <div class="card-footer chat-form">
+                                        <form id="chat-form">
+                                            <input type="text" class="form-control" placeholder="Type a message">
+                                            <button class="btn btn-primary">
+                                                <i class="far fa-paper-plane"></i>
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
+                            </div>
                         @endif
                     </div>
                 </div>
@@ -188,7 +198,7 @@
                 </div>
             </div>
         </div> --}}
-          {{-- Nastroyka end --}}
+        {{-- Nastroyka end --}}
     </div>
 
 </div>

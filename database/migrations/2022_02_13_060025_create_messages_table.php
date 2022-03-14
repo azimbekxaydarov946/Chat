@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('user_id')->nullable();
             $table->integer('file_id')->nullable();
             $table->integer('view')->nullable();
-            $table->date('date')->nullable();
+            $table->dateTime('date')->nullable();
             $table->integer('create_by')->nullable();
             $table->integer('update_by')->nullable();
             $table->integer('deleted_by')->nullable();

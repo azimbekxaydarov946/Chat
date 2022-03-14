@@ -24,7 +24,7 @@ class MessageFactory extends Factory
             'user_id'=>$this->faker->numberBetween(1,10),
             'file_id'=>$this->faker->numberBetween(1,10),
             'view'=>$this->faker->numberBetween(0,1),
-            'date'=>$this->faker->date(),
+            'date'=>$this->faker->dateTime(),
         ];
     }
 }
